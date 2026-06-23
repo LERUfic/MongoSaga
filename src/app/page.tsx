@@ -592,7 +592,7 @@ const saved = localStorage.getItem('noble_mongo_saved_connections');
                 MongoDB Version: <span className="font-mono text-cyan-400 font-semibold">{mongoVersion}</span>
               </div>
               <button
-                onClick={() => signOut({ callbackUrl: '/login' })}
+                onClick={() => signOut({ redirect: false }).then(() => window.location.href = '/login')}
                 className="px-4 py-2 text-sm font-bold rounded-lg flex items-center gap-2 bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 hover:border-red-300 dark:bg-red-500/10 dark:text-red-400 dark:border-red-500/20 dark:hover:bg-red-500/20 transition-all shadow-sm focus:outline-none active:scale-95"
                 title="Sign Out of App"
               >
