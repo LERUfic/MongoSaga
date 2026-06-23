@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mongosaga:
+    build: .
+    container_name: mongosaga_app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - AUTH_SECRET=generate_a_strong_secret_key_for_production
+      
+      # NextAuth Configuration
+      # - NEXTAUTH_URL=http://localhost:3000
+      
+      # Authentication Mode (LDAP or MOCK)
+      - AUTH_MODE=LDAP
+      
+      # LDAP Configuration
+      # - LDAP_URL=ldap://your-ldap-server:389
+      # - LDAP_BIND_DN=cn=admin,dc=example,dc=com
+      # - LDAP_BIND_PASSWORD=admin_password
+      # - LDAP_SEARCH_BASE_DNS=dc=example,dc=com
+      # - LDAP_SEARCH_FILTER=(sAMAccountName={{username}})
